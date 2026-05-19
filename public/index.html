@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahel — UAE Expat Survival Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96D;
+    --dark: #0A0A0F;
+    --dark2: #111118;
+    --dark3: #1A1A25;
+    --dark4: #22222F;
+    --text: #F0EDE8;
+    --text-muted: #9996A0;
+    --danger: #E05252;
+    --success: #52C096;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== LANDING PAGE ===== */
+  #landing {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--border);
+    color: var(--gold);
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 800px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+
+  .hero-title span {
+    color: var(--gold);
+    position: relative;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 18px 48px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+  }
+
+  .hero-price {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .hero-price strong {
+    color: var(--text);
+  }
+
+  .languages {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 48px;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .lang-tag {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Problems section */
+  .section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 48px;
+  }
+
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .problem-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: all 0.2s ease;
+  }
+
+  .problem-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .problem-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .problem-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .problem-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Features */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .feature-item {
+    background: var(--dark3);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .feature-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .feature-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .feature-text strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Pricing */
+  .pricing-card {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--dark2);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .pricing-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 4px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .pricing-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .pricing-amount sup {
+    font-size: 28px;
+    vertical-align: super;
+  }
+
+  .pricing-period {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    font-size: 15px;
+  }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .pricing-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--dark4);
+    font-size: 15px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .pricing-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 20px;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--dark2);
+    border-top: 1px solid var(--border);
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .footer-disclaimer {
+    font-size: 12px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  /* ===== APP PAGE ===== */
+  #app {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .app-header {
+    background: var(--dark2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .app-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .app-logo span {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    display: block;
+    line-height: 1;
+  }
+
+  .app-body {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - 65px);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 280px;
+    background: var(--dark2);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .sidebar-section {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 8px 8px 12px;
+  }
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .sidebar-item:hover, .sidebar-item.active {
+    background: var(--dark4);
+    color: var(--text);
+  }
+
+  .sidebar-item.active {
+    border-left: 2px solid var(--gold);
+    color: var(--gold);
+  }
+
+  /* Main content */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .chat-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .welcome-message {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .welcome-message h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .welcome-message p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .quick-btn {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    color: var(--text);
+  }
+
+  .quick-btn:hover {
+    border-color: var(--gold);
+    background: var(--dark4);
+  }
+
+  .quick-btn-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .quick-btn-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .quick-btn-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Messages */
+  .message {
+    display: flex;
+    gap: 14px;
+    max-width: 800px;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .message.user {
+    flex-direction: row-reverse;
+    align-self: flex-end;
+  }
+
+  .message-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    background: var(--dark4);
+  }
+
+  .message.assistant .message-avatar {
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .message-bubble {
+    background: var(--dark3);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 620px;
+    border: 1px solid var(--border);
+  }
+
+  .message.user .message-bubble {
+    background: var(--dark4);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .message-bubble h3 {
+    color: var(--gold);
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .message-bubble p {
+    margin-bottom: 12px;
+    color: var(--text-muted);
+  }
+
+  .message-bubble p:last-child {
+    margin-bottom: 0;
+  }
+
+  .message-bubble strong {
+    color: var(--text);
+  }
+
+  .message-bubble ul {
+    padding-left: 20px;
+    color: var(--text-muted);
+  }
+
+  .message-bubble ul li {
+    margin-bottom: 6px;
+  }
+
+  .document-output {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 16px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .doc-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .doc-btn {
+    background: var(--dark4);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .doc-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Input area */
+  .input-area {
+    padding: 20px 40px 28px;
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+  }
+
+  .input-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+
+  .input-wrapper:focus-within {
+    border-color: var(--gold);
+  }
+
+  #userInput {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    resize: none;
+    max-height: 120px;
+    min-height: 24px;
+    line-height: 1.5;
+  }
+
+  #userInput::placeholder {
+    color: var(--text-muted);
+  }
+
+  .send-btn {
+    background: var(--gold);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+    color: var(--dark);
+    font-size: 18px;
+  }
+
+  .send-btn:hover {
+    background: var(--gold-light);
+  }
+
+  .send-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Loading */
+  .typing-indicator {
+    display: flex;
+    gap: 5px;
+    padding: 16px 20px;
+    align-items: center;
+  }
+
+  .typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: typing 1.2s infinite;
+  }
+
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typing {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  /* Urgency selector */
+  .urgency-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .urgency-btn {
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--dark3);
+    color: var(--text-muted);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .urgency-btn.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .chat-area { padding: 20px 16px; }
+    .input-area { padding: 16px; }
+    .quick-actions { grid-template-columns: 1fr 1fr; }
+    .pricing-card { padding: 32px 24px; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Success page */
+  #success {
+    display: none;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+  }
+
+  .success-card {
+    max-width: 480px;
+  }
+
+  .success-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+  }
+
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .nav-bar {
+    background: var(--dark2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-outline:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== LANDING PAGE ===== -->
+<div id="landing">
+  <nav class="nav-bar">
+    <div class="nav-logo">سهل Sahel</div>
+    <div class="nav-links">
+      <a onclick="scrollToSection('problems')">Who It's For</a>
+      <a onclick="scrollToSection('features')">Features</a>
+      <a onclick="scrollToSection('pricing')">Pricing</a>
+      <button class="btn-outline" onclick="showApp()">Open App</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">🇦🇪 Built for UAE Expats — 10 Million of You</div>
+    <h1 class="hero-title">
+      Nobody wants you to<br><span>know this exists</span>
+    </h1>
+    <p class="hero-subtitle">
+      Every document, contract, legal letter and calculator you need to protect yourself in UAE. In your language. In 30 seconds.
+    </p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="startCheckout()">
+        Start Now — $29.99/month
+      </button>
+      <p class="hero-price">Less than <strong>one hour with a UAE lawyer</strong>. Cancel anytime.</p>
+    </div>
+    <div class="languages">
+      <span class="lang-tag">🇬🇧 English</span>
+      <span class="lang-tag">🇦🇪 العربية</span>
+      <span class="lang-tag">🇵🇰 اردو</span>
+      <span class="lang-tag">🇮🇳 हिंदी</span>
+      <span class="lang-tag">🇵🇭 Tagalog</span>
+      <span class="lang-tag">🇮🇳 മലയാളം</span>
+      <span class="lang-tag">🇧🇩 বাংলা</span>
+    </div>
+  </div>
+
+  <!-- Problems -->
+  <div id="problems" class="section">
+    <p class="section-label">Real Problems. Real Solutions.</p>
+    <h2 class="section-title">Every problem UAE expats face.<br>Solved in seconds.</h2>
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="problem-icon">🏠</div>
+        <div class="problem-title">Landlord stealing your deposit</div>
+        <div class="problem-desc">Generate a legal demand letter with RERA law references. Three urgency levels — Polite, Firm, Final Warning.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">💼</div>
+        <div class="problem-title">Employer holding your passport</div>
+        <div class="problem-desc">This is illegal in UAE. Get your legal response letter and know exactly which authority to contact.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📋</div>
+        <div class="problem-title">Visa confusion and overstay fines</div>
+        <div class="problem-desc">Calculate your fines, understand your options, get the letters you need. Step by step.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">⚖️</div>
+        <div class="problem-title">Labour disputes and unpaid salary</div>
+        <div class="problem-desc">File a complaint to MOHRE. Get your gratuity calculated. Know your rights under UAE Labour Law.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🚗</div>
+        <div class="problem-title">Traffic fines and car problems</div>
+        <div class="problem-desc">Appeal Salik fines, handle car accidents step by step, convert your driving licence.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🏦</div>
+        <div class="problem-title">Banking and bounced cheques</div>
+        <div class="problem-desc">Bounced cheque guide, bank letters, debt settlement. Know exactly what to do and when.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div id="features" class="section" style="background: var(--dark2); max-width: 100%; padding: 80px 40px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <p class="section-label">Everything Included</p>
+      <h2 class="section-title">One subscription.<br>Every tool you need.</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>100+ Document Templates</strong>Tenancy, employment, visa, legal — all UAE compliant</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>3 Urgency Levels</strong>Polite, Firm, and Final Warning on every letter</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>UAE Law References</strong>Every document cites the actual law automatically</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>All Calculators</strong>Gratuity, overtime, notice period, rent increase, visa fines</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>7 Languages</strong>English, Arabic, Urdu, Hindi, Tagalog, Malayalam, Bengali</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>Authority Directory</strong>MOHRE, GDRFA, RERA, RTA — who to call and what to say</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>Is This Legal Checker</strong>Ask anything about UAE law and get a clear answer</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>UAE Scam Detector</strong>Check if a job offer, rental, or deal is a scam</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-dot"></div>
+          <div class="feature-text"><strong>Download as PDF</strong>Professional letterhead with your name and details</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div id="pricing" class="section">
+    <p class="section-label" style="text-align:center">Simple Pricing</p>
+    <h2 class="section-title" style="text-align:center">One plan. Everything included.</h2>
+    <div class="pricing-card">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-amount"><sup>$</sup>29<span style="font-size:36px">.99</span></div>
+      <div class="pricing-period">per month — cancel anytime</div>
+      <ul class="pricing-features">
+        <li>Unlimited document generation</li>
+        <li>All 100+ templates included</li>
+        <li>All 7 languages</li>
+        <li>All calculators</li>
+        <li>UAE Scam Detector</li>
+        <li>Is This Legal checker</li>
+        <li>PDF downloads with letterhead</li>
+        <li>New features added every week</li>
+      </ul>
+      <button class="btn-primary" style="width:100%; font-size:16px; padding:18px" onclick="startCheckout()">
+        Get Full Access Now
+      </button>
+      <p class="pricing-note">Less than one hour with a UAE lawyer. No contracts. Cancel anytime.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">سهل Sahel</div>
+    <p class="footer-disclaimer">
+      Sahel provides AI-generated templates and general information only. This is not legal advice. 
+      For complex matters, consult a registered UAE lawyer.
+    </p>
+    <div class="footer-links">
+      <a>Privacy Policy</a>
+      <a>Terms of Service</a>
+      <a>Contact Support</a>
+      <a onclick="showApp()">Open App</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ===== APP PAGE ===== -->
+<div id="app" style="display:none; flex-direction:column; min-height:100vh;">
+  <div class="app-header">
+    <div>
+      <div class="app-logo">سهل Sahel</div>
+      <span style="font-size:12px; color:var(--text-muted)">UAE Expat Survival Kit</span>
+    </div>
+    <button class="btn-outline" onclick="startCheckout()">Upgrade — $29.99/mo</button>
+  </div>
+
+  <div class="app-body">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">📧 Communication</div>
+        <div class="sidebar-item" onclick="selectTool('email')">📧 Professional Email</div>
+        <div class="sidebar-item" onclick="selectTool('whatsapp')">💬 WhatsApp to Clients</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">🏠 Property & Housing</div>
+        <div class="sidebar-item" onclick="selectTool('tenancy')">📄 Tenancy Contract</div>
+        <div class="sidebar-item" onclick="selectTool('eviction')">🚪 Eviction Notice</div>
+        <div class="sidebar-item" onclick="selectTool('deposit')">💰 Deposit Refund Letter</div>
+        <div class="sidebar-item" onclick="selectTool('maintenance')">🔧 Maintenance Request</div>
+        <div class="sidebar-item" onclick="selectTool('rera')">⚖️ RERA Dispute Letter</div>
+        <div class="sidebar-item" onclick="selectTool('rent_calc')">📊 Rent Increase Calculator</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">💼 Employment & Labour</div>
+        <div class="sidebar-item" onclick="selectTool('employment_contract')">📋 Employment Contract</div>
+        <div class="sidebar-item" onclick="selectTool('resignation')">✉️ Resignation Letter</div>
+        <div class="sidebar-item" onclick="selectTool('labour_dispute')">⚖️ Labour Dispute Letter</div>
+        <div class="sidebar-item" onclick="selectTool('mohre')">📮 MOHRE Complaint</div>
+        <div class="sidebar-item" onclick="selectTool('gratuity')">💰 Gratuity Calculator</div>
+        <div class="sidebar-item" onclick="selectTool('passport_held')">🛂 Passport Held Letter</div>
+        <div class="sidebar-item" onclick="selectTool('wrongful_termination')">🚫 Wrongful Termination</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">🛂 Visa & Immigration</div>
+        <div class="sidebar-item" onclick="selectTool('visa_letter')">📄 Employment Visa Letter</div>
+        <div class="sidebar-item" onclick="selectTool('noc')">📋 NOC Letter</div>
+        <div class="sidebar-item" onclick="selectTool('visa_calc')">🧮 Visa Fine Calculator</div>
+        <div class="sidebar-item" onclick="selectTool('family_sponsor')">👨‍👩‍👧 Family Sponsorship</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">🚨 Legal & Emergency</div>
+        <div class="sidebar-item" onclick="selectTool('legal_checker')">⚖️ Is This Legal?</div>
+        <div class="sidebar-item" onclick="selectTool('scam_detector')">🔍 UAE Scam Detector</div>
+        <div class="sidebar-item" onclick="selectTool('bounced_cheque')">💸 Bounced Cheque Guide</div>
+        <div class="sidebar-item" onclick="selectTool('debt_settlement')">🤝 Debt Settlement Letter</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">🚗 Car & Transport</div>
+        <div class="sidebar-item" onclick="selectTool('car_sale')">🚗 Car Sale Agreement</div>
+        <div class="sidebar-item" onclick="selectTool('traffic_fine')">🚦 Traffic Fine Appeal</div>
+        <div class="sidebar-item" onclick="selectTool('salik_fine')">💳 Salik Fine Appeal</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">📋 Business Documents</div>
+        <div class="sidebar-item" onclick="selectTool('proposal')">📊 Business Proposal</div>
+        <div class="sidebar-item" onclick="selectTool('invoice')">🧾 Invoice Generator</div>
+        <div class="sidebar-item" onclick="selectTool('nda')">🔒 NDA Agreement</div>
+        <div class="sidebar-item" onclick="selectTool('business_setup')">🏢 Business Setup Guide</div>
+      </div>
+    </div>
+
+    <!-- Chat -->
+    <div class="main-content">
+      <div class="chat-area" id="chatArea">
+        <div class="welcome-message">
+          <h2>مرحباً — Welcome to Sahel</h2>
+          <p>Your UAE expat survival kit. What do you need help with today?</p>
+          <div class="quick-actions">
+            <div class="quick-btn" onclick="selectTool('deposit')">
+              <div class="quick-btn-icon">💰</div>
+              <div class="quick-btn-title">Security Deposit</div>
+              <div class="quick-btn-desc">Demand your deposit back from landlord</div>
+            </div>
+            <div class="quick-btn" onclick="selectTool('passport_held')">
+              <div class="quick-btn-icon">🛂</div>
+              <div class="quick-btn-title">Passport Held</div>
+              <div class="quick-btn-desc">Employer holding your passport illegally</div>
+            </div>
+            <div class="quick-btn" onclick="selectTool('gratuity')">
+              <div class="quick-btn-icon">💰</div>
+              <div class="quick-btn-title">Gratuity Calculator</div>
+              <div class="quick-btn-desc">Calculate your end of service pay</div>
+            </div>
+            <div class="quick-btn" onclick="selectTool('legal_checker')">
+              <div class="quick-btn-icon">⚖️</div>
+              <div class="quick-btn-title">Is This Legal?</div>
+              <div class="quick-btn-desc">Check if something is legal in UAE</div>
+            </div>
+            <div class="quick-btn" onclick="selectTool('scam_detector')">
+              <div class="quick-btn-icon">🔍</div>
+              <div class="quick-btn-title">Scam Detector</div>
+              <div class="quick-btn-desc">Check if a job or deal is a scam</div>
+            </div>
+            <div class="quick-btn" onclick="selectTool('mohre')">
+              <div class="quick-btn-icon">📮</div>
+              <div class="quick-btn-title">MOHRE Complaint</div>
+              <div class="quick-btn-desc">File a labour complaint</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <div class="urgency-selector" id="urgencySelector" style="display:none">
+          <span style="font-size:13px; color:var(--text-muted); margin-right:4px">Tone:</span>
+          <button class="urgency-btn active" onclick="setUrgency('polite', this)">😊 Polite</button>
+          <button class="urgency-btn" onclick="setUrgency('firm', this)">😤 Firm</button>
+          <button class="urgency-btn" onclick="setUrgency('final', this)">🚨 Final Warning</button>
+        </div>
+        <div class="input-wrapper">
+          <textarea id="userInput" placeholder="Describe your situation or ask anything about UAE law..." rows="1"
+            onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+          <button class="send-btn" onclick="sendMessage()" id="sendBtn">➤</button>
+        </div>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:10px; text-align:center">
+          Sahel provides AI-generated templates only. Not legal advice. For complex matters consult a UAE lawyer.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PUBLISHABLE_KEY = 'pk_live_51TYQaV3ATJqVNnjXi8EXGXrMRsyEe1JR5dIxEmnHvAjjYf2OgjlB3V7prVnAo2VhC5h8jcjoz5RBMbiqV7pdcvkl00mZbr2diJ';
+  
+  let currentTool = null;
+  let currentUrgency = 'polite';
+  let conversationHistory = [];
+
+  const toolPrompts = {
+    email: "You are Sahel, a UAE expat assistant. Help the user write a professional email. Ask for: recipient, purpose, key points to include. Then write a polished professional email.",
+    whatsapp: "You are Sahel, a UAE expat assistant. Help write a professional WhatsApp message to a client. Keep it concise, respectful, and effective. Ask what the message is about.",
+    tenancy: "You are Sahel, a UAE expat legal assistant. Generate a UAE-compliant Standard Tenancy Contract (Ejari compliant). Ask for: landlord name, tenant name, property address, rent amount, start date, duration. Reference UAE Tenancy Law (Law No. 26 of 2007).",
+    eviction: "You are Sahel, a UAE expat legal assistant. Generate an eviction notice letter. Ask for details. Reference UAE Tenancy Law. Include the urgency level chosen.",
+    deposit: "You are Sahel, a UAE expat legal assistant. Generate a security deposit refund demand letter. Ask for: landlord name, property address, deposit amount, move out date. Reference RERA regulations and UAE Tenancy Law No. 26 of 2007. Match the urgency level: polite first request, firm second request, or final warning with legal action threat.",
+    maintenance: "You are Sahel, a UAE expat legal assistant. Generate a landlord maintenance request letter. Ask for the issue details. Reference UAE landlord obligations under Tenancy Law.",
+    rera: "You are Sahel, a UAE expat legal assistant. Generate a RERA dispute letter. Ask for dispute details. Explain how to file with RERA/RDC (Rental Dispute Centre).",
+    rent_calc: "You are Sahel, a UAE expat assistant. Calculate rent increase using RERA Rent Index. Ask for: current rent, area, number of bedrooms, when tenancy started. Then calculate the maximum legal increase allowed under RERA.",
+    employment_contract: "You are Sahel, a UAE expat legal assistant. Generate a UAE-compliant employment contract. Ask for: employer name, employee name, position, salary, start date, working hours. Reference UAE Labour Law Federal Decree No. 33 of 2021.",
+    resignation: "You are Sahel, a UAE expat assistant. Generate a professional resignation letter. Ask for: employer name, position, notice period, last working day.",
+    labour_dispute: "You are Sahel, a UAE expat legal assistant. Generate a labour dispute letter. Ask for the issue details. Reference UAE Labour Law Federal Decree No. 33 of 2021.",
+    mohre: "You are Sahel, a UAE expat legal assistant. Help file a MOHRE (Ministry of Human Resources) complaint. Ask for: employer name, issue type, dates, amounts owed. Generate the complaint letter and explain how to submit it via MOHRE app or mohre.gov.ae.",
+    gratuity: "You are Sahel, a UAE expat assistant. Calculate end of service gratuity. Ask for: basic salary, years of service, contract type (limited/unlimited), reason for leaving. Calculate using UAE Labour Law formula and show the breakdown.",
+    passport_held: "You are Sahel, a UAE expat legal assistant. Generate a letter demanding return of passport held by employer. Note clearly: holding an employee's passport is ILLEGAL in UAE under Federal Law No. 6 of 1973. Ask for employer name and details. Generate a firm legal letter and explain steps to report to MOHRE.",
+    wrongful_termination: "You are Sahel, a UAE expat legal assistant. Generate a wrongful termination letter. Ask for details. Reference UAE Labour Law Federal Decree No. 33 of 2021 on arbitrary dismissal.",
+    visa_letter: "You are Sahel, a UAE expat legal assistant. Generate an employment visa support letter. Ask for required details.",
+    noc: "You are Sahel, a UAE expat legal assistant. Generate a No Objection Certificate (NOC) letter. Ask for: employer name, employee name, purpose of NOC.",
+    visa_calc: "You are Sahel, a UAE expat assistant. Calculate UAE visa overstay fines. Ask for: visa type, entry date, current date. Calculate the fine and explain payment options.",
+    family_sponsor: "You are Sahel, a UAE expat legal assistant. Generate a family sponsorship support letter. Ask for required details about the sponsor and family member.",
+    legal_checker: "You are Sahel, a UAE expat legal expert. The user wants to know if something is legal in UAE. Give a clear YES or NO answer first, then explain the relevant UAE law. Be specific about which law applies.",
+    scam_detector: "You are Sahel, a UAE expat scam detector. Analyze whether a job offer, rental, business deal or opportunity sounds like a UAE scam. Ask the user to describe the offer. Look for red flags common in UAE scams: upfront fees, too-good salaries, requests for passport copies, unverified companies. Give a clear SCAM RISK rating: LOW / MEDIUM / HIGH.",
+    bounced_cheque: "You are Sahel, a UAE expat legal assistant. Guide the user through a bounced cheque situation in UAE. Explain the legal implications under UAE Penal Code Article 401, options available, and generate a response letter if needed.",
+    debt_settlement: "You are Sahel, a UAE expat legal assistant. Generate a debt settlement letter. Ask for: creditor name, amount owed, proposed settlement amount.",
+    car_sale: "You are Sahel, a UAE expat legal assistant. Generate a private car sale agreement. Ask for: seller name, buyer name, car details, price, condition.",
+    traffic_fine: "You are Sahel, a UAE expat assistant. Generate a traffic fine appeal letter to RTA. Ask for: fine details, reason for appeal.",
+    salik_fine: "You are Sahel, a UAE expat assistant. Generate a Salik fine appeal letter. Ask for fine details and reason.",
+    proposal: "You are Sahel, a UAE expat business assistant. Generate a professional business proposal. Ask for: business type, client name, services offered, pricing.",
+    invoice: "You are Sahel, a UAE expat business assistant. Generate a professional invoice in AED. Ask for: business name, client name, items/services, amounts.",
+    nda: "You are Sahel, a UAE expat legal assistant. Generate a Non-Disclosure Agreement (NDA). Ask for: party names, confidential information type, duration.",
+    business_setup: "You are Sahel, a UAE expat business assistant. Guide the user through UAE business setup. Ask whether they want: Mainland, Freezone, or Offshore. Then provide a step-by-step guide with costs and requirements."
+  };
+
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function showApp() {
+    document.getElementById('landing').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+  }
+
+  function showLanding() {
+    document.getElementById('landing').style.display = 'block';
+    document.getElementById('app').style.display = 'none';
+  }
+
+  async function startCheckout() {
+    try {
+      const res = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+    } catch (err) {
+      alert('Unable to connect to payment system. Please try again.');
+    }
+  }
+
+  function selectTool(tool) {
+    currentTool = tool;
+    conversationHistory = [];
+
+    // Update active state
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    event && event.target && event.target.classList.add('active');
+
+    // Show urgency for letter tools
+    const letterTools = ['deposit', 'eviction', 'maintenance', 'labour_dispute', 'mohre', 'rera', 'wrongful_termination', 'passport_held'];
+    document.getElementById('urgencySelector').style.display = letterTools.includes(tool) ? 'flex' : 'none';
+
+    // Clear chat
+    const chatArea = document.getElementById('chatArea');
+    chatArea.innerHTML = '';
+
+    // Start conversation
+    const systemPrompt = toolPrompts[tool] || "You are Sahel, a UAE expat legal and document assistant. Help the user with their UAE-related needs.";
+    const openingMessages = {
+      deposit: "I'll help you demand your security deposit back. To generate the right letter, I need a few details:\n\n**What is your landlord's name?** And what is the property address?",
+      passport_held: "⚠️ **Important:** Holding an employee's passport is ILLEGAL in UAE under Federal Law No. 6 of 1973.\n\nI'll generate a strong legal letter demanding your passport back. What is your employer's company name?",
+      gratuity: "I'll calculate your UAE end of service gratuity. Please tell me:\n\n1. What is your **basic monthly salary** (in AED)?\n2. How many **years and months** have you worked?\n3. Are you on a **limited or unlimited** contract?\n4. Why are you leaving? (Resignation / Termination)",
+      legal_checker: "Ask me anything about UAE law and I'll tell you clearly if it's legal or not — and which law applies.\n\n**What do you want to know?**",
+      scam_detector: "🔍 **UAE Scam Detector**\n\nDescribe the job offer, rental, or deal you want me to check. Include as many details as possible — salary offered, how you were contacted, what they're asking you to do.",
+      visa_calc: "I'll calculate your UAE visa overstay fine.\n\nWhat **type of visa** do you have? (Tourist, Visit, Employment, etc.) And what was your **visa expiry date**?",
+    };
+
+    const opening = openingMessages[tool] || `I'll help you with that. ${getToolName(tool)}.\n\nPlease describe your situation and I'll ask you the details I need.`;
+    addMessage('assistant', opening);
+  }
+
+  function getToolName(tool) {
+    const names = {
+      email: 'Tell me who you\'re emailing and what about',
+      whatsapp: 'Tell me what you need to say to your client',
+      tenancy: 'I\'ll generate a UAE-compliant tenancy contract',
+      employment_contract: 'I\'ll generate a UAE Labour Law compliant employment contract',
+      resignation: 'I\'ll write your resignation letter',
+      noc: 'I\'ll generate your NOC letter',
+      mohre: 'I\'ll help you file a MOHRE complaint',
+      rera: 'I\'ll help with your RERA dispute',
+      car_sale: 'I\'ll generate a car sale agreement',
+      traffic_fine: 'I\'ll write your traffic fine appeal',
+      salik_fine: 'I\'ll write your Salik fine appeal',
+      proposal: 'I\'ll generate your business proposal',
+      invoice: 'I\'ll create your invoice',
+      nda: 'I\'ll generate your NDA agreement',
+      business_setup: 'I\'ll guide you through UAE business setup',
+      bounced_cheque: 'I\'ll guide you through the bounced cheque process',
+      debt_settlement: 'I\'ll generate a debt settlement letter',
+      family_sponsor: 'I\'ll generate your family sponsorship letter',
+      visa_letter: 'I\'ll generate your employment visa letter',
+    };
+    return names[tool] || 'Tell me about your situation';
+  }
+
+  function setUrgency(level, btn) {
+    currentUrgency = level;
+    document.querySelectorAll('.urgency-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function addMessage(role, content) {
+    const chatArea = document.getElementById('chatArea');
+    const div = document.createElement('div');
+    div.className = `message ${role}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'message-avatar';
+    avatar.textContent = role === 'assistant' ? 'س' : '👤';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'message-bubble';
+    bubble.innerHTML = formatMessage(content);
+
+    div.appendChild(avatar);
+    div.appendChild(bubble);
+    chatArea.appendChild(div);
+    chatArea.scrollTop = chatArea.scrollHeight;
+    return bubble;
+  }
+
+  function formatMessage(text) {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/\n/g, '<br>')
+      .replace(/^/, '<p>')
+      .replace(/$/, '</p>');
+  }
+
+  function showTyping() {
+    const chatArea = document.getElementById('chatArea');
+    const div = document.createElement('div');
+    div.className = 'message assistant';
+    div.id = 'typingIndicator';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'message-avatar';
+    avatar.textContent = 'س';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'message-bubble';
+    bubble.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+
+    div.appendChild(avatar);
+    div.appendChild(bubble);
+    chatArea.appendChild(div);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function removeTyping() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) indicator.remove();
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const text = input.value.trim();
+    if (!text) return;
+
+    input.value = '';
+    input.style.height = 'auto';
+    document.getElementById('sendBtn').disabled = true;
+
+    if (!currentTool) {
+      addMessage('user', text);
+      showTyping();
+      await callClaude(text, "You are Sahel, a helpful UAE expat assistant. Help with any UAE-related question about documents, legal matters, visas, employment, housing, or daily life in UAE.");
+      removeTyping();
+      document.getElementById('sendBtn').disabled = false;
+      return;
+    }
+
+    addMessage('user', text);
+    conversationHistory.push({ role: 'user', content: text });
+
+    showTyping();
+
+    const systemPrompt = toolPrompts[currentTool] + ` Current urgency level: ${currentUrgency}. When generating letters, use the ${currentUrgency} tone. Always reference relevant UAE laws.`;
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: conversationHistory,
+          system: systemPrompt
+        })
+      });
+
+      const data = await res.json();
+      const reply = data.content[0].text;
+      conversationHistory.push({ role: 'assistant', content: reply });
+
+      removeTyping();
+
+      // Check if it's a document/letter
+      const isDocument = reply.length > 400 && (
+        reply.includes('Dear') || reply.includes('To Whom') || 
+        reply.includes('AGREEMENT') || reply.includes('CONTRACT') ||
+        reply.includes('LETTER') || reply.includes('Date:') ||
+        reply.includes('[Date]') || reply.includes('Re:')
+      );
+
+      if (isDocument) {
+        const bubble = addMessage('assistant', '✅ **Your document is ready.** You can copy it below or download as PDF.');
+        const docDiv = document.createElement('div');
+        docDiv.className = 'document-output';
+        docDiv.textContent = reply;
+        bubble.appendChild(docDiv);
+
+        const actions = document.createElement('div');
+        actions.className = 'doc-actions';
+        actions.innerHTML = `
+          <button class="doc-btn" onclick="copyDoc(this)">📋 Copy Document</button>
+          <button class="doc-btn" onclick="downloadDoc('${currentTool}')">📄 Download PDF</button>
+          <button class="doc-btn" onclick="selectTool('${currentTool}')">🔄 New Document</button>
+        `;
+        bubble.appendChild(actions);
+      } else {
+        addMessage('assistant', reply);
+      }
+
+    } catch (err) {
+      removeTyping();
+      addMessage('assistant', 'Sorry, there was an error. Please try again.');
+    }
+
+    document.getElementById('sendBtn').disabled = false;
+  }
+
+  async function callClaude(text, system) {
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: text }],
+          system: system
+        })
+      });
+      const data = await res.json();
+      const reply = data.content[0].text;
+      addMessage('assistant', reply);
+    } catch (err) {
+      addMessage('assistant', 'Sorry, there was an error. Please try again.');
+    }
+    document.getElementById('sendBtn').disabled = false;
+  }
+
+  function copyDoc(btn) {
+    const docText = btn.parentElement.previousElementSibling.textContent;
+    navigator.clipboard.writeText(docText).then(() => {
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '📋 Copy Document', 2000);
+    });
+  }
+
+  function downloadDoc(tool) {
+    const docOutput = document.querySelector('.document-output');
+    if (!docOutput) return;
+
+    const content = docOutput.textContent;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `sahel-${tool}-${Date.now()}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+  }
+
+  // Check for success redirect
+  if (window.location.pathname === '/success.html' || window.location.search.includes('success')) {
+    showApp();
+  }
+</script>
+</body>
+</html>
