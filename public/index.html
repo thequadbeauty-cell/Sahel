@@ -1381,6 +1381,11 @@
     btn.classList.add('active');
   }
 
+  function scrollToBottom() {
+    const chatArea = document.getElementById('chatArea');
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
   function addMessage(role, content) {
     const chatArea = document.getElementById('chatArea');
     const div = document.createElement('div');
@@ -1397,7 +1402,7 @@
     div.appendChild(avatar);
     div.appendChild(bubble);
     chatArea.appendChild(div);
-    chatArea.scrollTop = chatArea.scrollHeight;
+    scrollToBottom();
     return bubble;
   }
 
