@@ -777,6 +777,89 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* Paywall Modal */
+  .paywall-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .paywall-overlay.active {
+    display: flex;
+  }
+
+  .paywall-card {
+    background: var(--dark2);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 48px;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    animation: fadeUp 0.3s ease;
+  }
+
+  .paywall-icon { font-size: 48px; margin-bottom: 16px; }
+
+  .paywall-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .paywall-desc {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .paywall-price {
+    font-size: 42px;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .paywall-period {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .paywall-features {
+    list-style: none;
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  .paywall-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--dark4);
+    font-size: 14px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .paywall-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .paywall-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 16px;
+  }
+
   /* Success page */
   #success {
     display: none;
@@ -1146,6 +1229,29 @@
   </div>
 </div>
 
+<!-- Paywall Modal -->
+<div class="paywall-overlay" id="paywallOverlay">
+  <div class="paywall-card">
+    <div class="paywall-icon">🔒</div>
+    <h2 class="paywall-title">You've used your 3 free messages</h2>
+    <p class="paywall-desc">Subscribe to Sahel for unlimited access to every document, contract, legal letter and calculator in UAE.</p>
+    <div class="paywall-price">$29.99</div>
+    <div class="paywall-period">per month — cancel anytime</div>
+    <ul class="paywall-features">
+      <li>Unlimited document generation</li>
+      <li>All 100+ UAE templates</li>
+      <li>All 7 languages</li>
+      <li>All calculators</li>
+      <li>UAE Scam Detector</li>
+      <li>PDF downloads</li>
+    </ul>
+    <button class="btn-primary" style="width:100%; font-size:16px; padding:18px" onclick="startCheckout()">
+      Subscribe Now — $29.99/month
+    </button>
+    <p class="paywall-note">Less than one hour with a UAE lawyer. Cancel anytime.</p>
+  </div>
+</div>
+
 <script>
   const PUBLISHABLE_KEY = 'pk_live_51TYQaV3ATJqVNnjXi8EXGXrMRsyEe1JR5dIxEmnHvAjjYf2OgjlB3V7prVnAo2VhC5h8jcjoz5RBMbiqV7pdcvkl00mZbr2diJ';
   
@@ -1363,6 +1469,13 @@
           system: systemPrompt
         })
       });
+
+      if (res.status === 403) {
+        removeTyping();
+        document.getElementById('paywallOverlay').classList.add('active');
+        document.getElementById('sendBtn').disabled = false;
+        return;
+      }
 
       const data = await res.json();
       const reply = data.content[0].text;
