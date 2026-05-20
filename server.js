@@ -27,13 +27,14 @@ async function hasActiveSubscription(email) {
   }
 }
 
-// Track free messages per session
-const freeSessions = {};
+// Track free messages per IP
+const freeUsage = {};
 
 // Claude API proxy - with paywall
 app.post('/api/chat', async (req, res) => {
   try {
-    const { messages, system, email, sessionId } = req.body;
+    const { messages, system, email } = req.body;
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
 
     // Check if paid subscriber
     if (email) {
@@ -58,19 +59,19 @@ app.post('/api/chat', async (req, res) => {
       }
     }
 
-    // Free user - allow 2 messages only
-    if (sessionId) {
-      if (!freeSessions[sessionId]) {
-        freeSessions[sessionId] = 0;
-      }
-      if (freeSessions[sessionId] >= 2) {
-        return res.status(403).json({
-          error: 'FREE_LIMIT_REACHED',
-          message: 'You have used your 2 free messages. Subscribe for unlimited access.'
-        });
-      }
-      freeSessions[sessionId]++;
+    // Free user - track by IP - 3 messages only
+    if (!freeUsage[ip]) {
+      freeUsage[ip] = 0;
     }
+
+    if (freeUsage[ip] >= 3) {
+      return res.status(403).json({
+        error: 'FREE_LIMIT_REACHED',
+        message: 'FREE_LIMIT_REACHED'
+      });
+    }
+
+    freeUsage[ip]++;
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
