@@ -1261,6 +1261,23 @@
   let currentUrgency = 'polite';
   let conversationHistory = [];
 
+  // Free message counter stored in browser
+  function getFreeCount() {
+    return parseInt(localStorage.getItem('sahel_free') || '0');
+  }
+
+  function incrementFreeCount() {
+    localStorage.setItem('sahel_free', getFreeCount() + 1);
+  }
+
+  function checkPaywall() {
+    if (getFreeCount() >= 3) {
+      document.getElementById('paywallOverlay').classList.add('active');
+      return true;
+    }
+    return false;
+  }
+
   const toolPrompts = {
     email: "You are Sahel, a UAE expat assistant. Help the user write a professional email. Ask for: recipient, purpose, key points to include. Then write a polished professional email.",
     whatsapp: "You are Sahel, a UAE expat assistant. Help write a professional WhatsApp message to a client. Keep it concise, respectful, and effective. Ask what the message is about.",
@@ -1447,9 +1464,14 @@
     const text = input.value.trim();
     if (!text) return;
 
+    // Check paywall first
+    if (checkPaywall()) return;
+
     input.value = '';
     input.style.height = 'auto';
     document.getElementById('sendBtn').disabled = true;
+
+    incrementFreeCount();
 
     if (!currentTool) {
       addMessage('user', text);
