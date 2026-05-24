@@ -127,13 +127,34 @@
     box-shadow: 0 12px 40px rgba(201,168,76,0.3);
   }
 
-  .hero-price {
-    font-size: 14px;
-    color: var(--text-muted);
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(240,237,232,0.2);
+    padding: 16px 48px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  .hero-price strong {
-    color: var(--text);
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .free-badge {
+    display: inline-block;
+    background: rgba(82,192,150,0.15);
+    border: 1px solid rgba(82,192,150,0.3);
+    color: #52C096;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
   }
 
   .languages {
@@ -954,7 +975,7 @@
       <a onclick="scrollToSection('problems')">Who It's For</a>
       <a onclick="scrollToSection('features')">Features</a>
       <a onclick="scrollToSection('pricing')">Pricing</a>
-      <button class="btn-outline" onclick="showApp()">Open App</button>
+      <button class="btn-outline" onclick="showApp()">Try Free — 3 Messages</button>
     </div>
   </nav>
 
@@ -968,8 +989,12 @@
       Every document, contract, legal letter and calculator you need to protect yourself in UAE. In your language. In 30 seconds.
     </p>
     <div class="hero-cta">
-      <button class="btn-primary" onclick="startCheckout()">
-        Start Now — $29.99/month
+      <div class="free-badge">✓ First 3 messages FREE — no signup needed</div>
+      <button class="btn-primary" onclick="showApp()">
+        Try Free Now
+      </button>
+      <button class="btn-secondary" onclick="startCheckout()">
+        Subscribe — $29.99/month
       </button>
       <p class="hero-price">Less than <strong>one hour with a UAE lawyer</strong>. Cancel anytime.</p>
     </div>
@@ -1086,8 +1111,11 @@
         <li>PDF downloads with letterhead</li>
         <li>New features added every week</li>
       </ul>
-      <button class="btn-primary" style="width:100%; font-size:16px; padding:18px" onclick="startCheckout()">
-        Get Full Access Now
+      <button class="btn-primary" style="width:100%; font-size:16px; padding:18px; margin-bottom:12px" onclick="showApp()">
+        Try Free — 3 Messages No Signup
+      </button>
+      <button class="btn-secondary" style="width:100%; font-size:15px; padding:14px" onclick="startCheckout()">
+        Subscribe Now — $29.99/month
       </button>
       <p class="pricing-note">Less than one hour with a UAE lawyer. No contracts. Cancel anytime.</p>
     </div>
@@ -1104,7 +1132,7 @@
       <a>Privacy Policy</a>
       <a>Terms of Service</a>
       <a>Contact Support</a>
-      <a onclick="showApp()">Open App</a>
+      <a onclick="showApp()">Try Free</a>
     </div>
   </footer>
 </div>
